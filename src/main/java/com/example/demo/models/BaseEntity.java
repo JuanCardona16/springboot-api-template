@@ -1,8 +1,9 @@
-package com.example.demo.config.models;
+package com.example.demo.models;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.UuidGenerator;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -18,6 +19,10 @@ public abstract class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @UuidGenerator
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private Long uuid;
 
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
